@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Let's Blog </title> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='blog.css') }}">
+    </head>
+    <body>
+            {% extends "home.html" %}
+            {% block content %}
+            <div class="main">
+                    <div class="main-heading">
+                        <h1>Express what you think</h1>
+                    </div>
+                    <p>
+                        A blog is a personnal online diary or a journal which allows 
+                        you to share your thoughts and ideas. You can add video, games, 
+                        pictures, music, read comments visitor leave on your blog. 
+                        You can do all these things without the need of any programming knowledge.
+                    </p>
+	                <a href="{{ url_for('blogger',username=current_user.username) }}" class="button">Click Here to start blogging</a>
+            </div>
+            
+            {% endblock %}
+    </body>
+</html>

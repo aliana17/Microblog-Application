@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Let's Blog </title> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
+    </head>
+    <body>
+        <div class="header">
+                <div class="header-logo"><a href="{{ url_for('home') }}">Let's Blog</a></div>
+                <div class="header-list">
+                <ul>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                    {% if current_user.is_anonymous %}
+                    <li style="float:right"><a href="{{ url_for('login') }}">Login</a></li>
+                    {% else %}
+                    <li style="float:right"><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% endif %}
+                </ul>   
+                </div>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+        
+    </body>
+</html>
